@@ -38,7 +38,10 @@ This should not be too complicated or time consuming to create and yet the appli
     - Evasion
     - Luck
 - These stats can be manipulated by editing a card hand that has room for x cards.
-- The cards may be randomly acquired by using the application. The idea is to encourage the use of the application with a "price system".
+- The cards may be randomly acquired by using the application. The idea is to encourage the use of the application with a "prize system".
 - I will add a possibility to challenge a constantly stronger AI-encounter. The battle itself will probably be just a simple loop of actions taken in turn and the profile / encounter stats making the difference and deciding the outcome. Winning an encounter will increase the card hand size.
 - I will probably restrict the interval how often this kind of encounter can be taken.
 - In other words, users will use the messaging board application and gain a random collection of cards that can be used to enhance the profiles propability of winning increasingly difficult AI-enemies.
+---
+
+Please note that the above mentioned spec is not final in any way and will more than likey chance during the process.
