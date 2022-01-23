@@ -1,6 +1,3 @@
-# messages-and-drops
-This is a school exercise.
-
 # Messages and drops
 ## Background
 
