@@ -27,10 +27,10 @@ This should not be too complicated or time consuming to create and yet the appli
 - I will initially have 2 levels of permissions. Developer role and users. All users will have equal permissions within the system. Users will have administrative permissions regarding their own posts and their own messaging threads. 
     - The hierarchy here will be so that a developer role may administrate basically everything. Illegal or application user term breaking content must be possible to be removed by developer. Inappropriate use of the application will result in deletion of the user account along with all content tied to them. If this is not to keep the application and it's database clean of anything suspicious, the application will be stopped and not taken into use until preventive actions have been taken to use and developer so decides. Developer may do some DevOps work within the application to fix and investigate issues of malfunctions.
     - Users will have administrative permissions regarding the messaging chains/threads created by them. The users may delete posts within the thread or the thread itself. Users may edit the threads information to some extent. Users will be able to restrict access to their threads for all others than developers.
-    -Users will have administrative access regarding their posts. Users may edit or delete their own posts.
+    - Users will have administrative access regarding their posts. Users may edit or delete their own posts.
 - Users may send posts: These posts may be individual ones, or answers to another posts. These posts may be visible on general post channel, or on separate threads. The posts may include text (and/or images if I feel like it)
--Users may create threads/message chains. There threads may have varying access for different users.
--Each user has their individual numeric profile stats. These stats will be something like:
+- Users may create threads/message chains. There threads may have varying access for different users.
+- Each user has their individual numeric profile stats. These stats will be something like:
     - Health
     - Strength
     - Defense
