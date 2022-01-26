@@ -1,0 +1,24 @@
+<!---<title>Front page</title>
+<h1>Front page</h1>
+<p>{{ message }}</p>
+<ul>
+{% for item in items %}
+<li> {{ item }}
+{% endfor %}
+</ul>
+<img src="/static/kuva.png" alt="Eggström">--->
+
+Viestien määrä: {{ count }}
+<hr>
+{% for message in messages %}
+{{ message.content }}
+<hr>
+{% endfor %}
+<a href="/new">Lähetä viesti</a>
+</br>
+
+<img src="/static/card_str1.png" alt="strength+1-card">
+<img src="/static/card_def1.png" alt="defence+1-card">
+<img src="/static/card_eva1.png" alt="evasion+1-card">
+<img src="/static/card_acc1.png" alt="accuracy+1-card">
+<img src="/static/card_lck1.png" alt="luck+1-card">
