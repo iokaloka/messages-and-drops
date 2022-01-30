@@ -16,11 +16,15 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def index():
+    return render_template("index.html", error="")
+  
+@app.route("/home")
+def home():
     sql = "SELECT id, topic, created_at FROM polls ORDER BY id DESC"
     result = db.session.execute(sql)
     polls = result.fetchall()
-    return render_template("index.html", polls=polls)
-    
+    return render_template("home.html", polls=polls)
+  
 @app.route("/login",methods=["POST"])
 def login():
     username = request.form["username"]
@@ -30,17 +34,23 @@ def login():
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()    
     if not user:
-        # TODO: invalid username
+        # Invalid username: I want the application to behave similarry if either username of password does not match.
+        # This way inputting random usernames cannot be used to find out what usernames are actually stored in the database.
+        print("User not found")
+        return render_template("index.html", error="Wrong username or password")
     else:
         hash_value = user.password
         if check_password_hash(hash_value, password):
-            # TODO: correct username and password
+            # If the credential match, we will set the username to session and redirect to home page.
+            session["username"] = username
+            print("Success")
+            return redirect("/home")
         else:
-            # TODO: invalid password
+            # Invalid username: I want the application to behave similarry if either username of password does not match.
+            # This way inputting random usernames cannot be used to find out what usernames are actually stored in the database.
+            print("Password not matching")
+            return render_template("index.html", error="Wrong username or password")
     
-    session["username"] = username
-    return redirect("/")
-
 @app.route("/logout")
 def logout():
     del session["username"]
