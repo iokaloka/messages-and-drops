@@ -1,10 +1,12 @@
 Create username and password
-<br>{{ error }}
 <hr>
+{{ error }}
 <form action="/register" method="POST">
 <p>Username:<br>
 <input type="text" name="username"></p>
 <p>Password:<br>
-<input type="text" name="password"></p>
+<input type="password" name="password"></p>
+<p>Type the password again</p>
+<input type="password" name="password2"></p>
 <input type="submit" value="Confirm">
 <a href="/">Takaisin</a>

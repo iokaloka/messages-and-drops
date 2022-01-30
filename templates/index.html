@@ -26,10 +26,9 @@ Viestien määrä: {{ count }}
 --->
 
 {% if session.username %}
-<p>You are signed in as {{ session.username }}</p>
-<a href="/home">Go to homepage</a>
-or
-<a href="/logout">Logout</a>
+<p>You are signed in as {{ session.username }}</br>
+You may return to <a href="/home">home page</a> or <a href="/logout">logout</a>.
+</p>
 {% else %}
 <br>{{ error }}
 <form action="/login" method="POST">
@@ -39,8 +38,8 @@ or
 <input type="password" name="password"></p>
 <input type="submit" value="Sign in">
 </br>
-<a href="/init_registration/0">Register</a>
 </form>
+<p>If you do not yet have a user account, you may register <a href="/init_registration/0">Here</a></p>
 {% endif %}
 
 

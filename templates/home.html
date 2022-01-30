@@ -1,7 +1,28 @@
-<p>Olet kirjautunut nimellä {{ session.username }}</p>
-<a href="/logout">Logout</a>
-<a href="/new">New survey</a>
+<h1 style="text-align: center;">Welcome {{ session.username }}!</h1>
 <hr>
+	<p style="text-align: center;">Main thread</p>
+	<p style="border-style: groove; height: 35%; padding: 20px;">
+		{% for message in messages %}
+			{{ message.created_at.strftime("%Y-%m-%d %H:%M:%S") }} by: <b>{{ message.username }}</b><br>
+			- {{ message.content }}</br>
+			<br>
+		{% endfor %}
+		<form action="/send_message" method="POST">
+			Message: <br>
+			<textarea name="content" rows="3" cols="40"></textarea>
+			<br>
+			<input type="submit" value="Send">
+		</form>
+	</p>
+<form action="/search" method="GET">
+	Hakusana: <input type="text" name="query"></br>
+	<input type="submit" value="Search">
+</form>
+
+<a href="/logout">Logout</a>
+<!--
+<a href="/new">New survey</a>
+
 {% for poll in polls %}
 Aihe: {{ poll.topic }} <br>
 Luotu: {{ poll.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br>
@@ -9,9 +30,4 @@ Luotu: {{ poll.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br>
 <a href="/result/{{ poll.id }}">Show results</a> <br>
 <hr>
 {% endfor %}
-</br>
-<form action="/search" method="GET">
-Hakusana: <input type="text" name="query">
-<br>
-<input type="submit" value="Search">
-</form>
+--->

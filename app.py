@@ -4,6 +4,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from os import getenv
 
+#################################################################################################################################
+
 app = Flask(__name__)
 app.secret_key = getenv("SECRET_KEY")
 
@@ -12,7 +14,10 @@ app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")
 
 # Removes the SQLAlchemy warning when the application is ran.
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
 db = SQLAlchemy(app)
+
+#################################################################################################################################
 
 @app.route("/")
 def index():
@@ -20,10 +25,10 @@ def index():
   
 @app.route("/home")
 def home():
-    sql = "SELECT id, topic, created_at FROM polls ORDER BY id DESC"
+    sql = "SELECT thread_id, content, created_at, username FROM messages ORDER BY created_at DESC"
     result = db.session.execute(sql)
-    polls = result.fetchall()
-    return render_template("home.html", polls=polls)
+    messages = result.fetchall()
+    return render_template("home.html", messages=messages)
   
 @app.route("/login",methods=["POST"])
 def login():
@@ -57,6 +62,8 @@ def logout():
 def init_registration(id):
     if id == 0:
         return  render_template("register.html", error="")
+    elif id == 1:
+        return  render_template("register.html", error="The passwords did not match!")
     else:
         return  render_template("register.html", error="User with that name already exists")
 
@@ -68,7 +75,14 @@ def register():
     result = db.session.execute(sql_find_existing_user, {"username_to_add":username_to_add})
     existing_user = result.fetchone()
     already_exists = existing_user != None and existing_user[0] == username_to_add
-
+    
+    # First we make sure the 2 passwords in the form match each other
+    password1 = request.form["password"]
+    password2 = request.form["password2"]
+    if not password1 == password2:
+        return redirect("/init_registration/1")
+    
+    # If the user does not already exist we create it;
     if not already_exists:
         hash_value = generate_password_hash(request.form["password"])
         user_role = "USER"
@@ -80,7 +94,7 @@ def register():
     if registration_success:
         return redirect("/registration_complete")
     else:
-        return redirect("/init_registration/1")
+        return redirect("/init_registration/2")
     
 @app.route("/registration_complete")
 def registration_complete():
@@ -145,6 +159,18 @@ def search():
     result = db.session.execute(sql, {"query":"%"+query+"%"})
     messages = result.fetchall()
     return render_template("search_results.html", count=len(messages), messages=messages)
+    
+@app.route("/send_message/", methods=["POST"])
+def send_message():
+    content = request.form["content"]
+    thread_id = '1';
+    user = session["username"]
+    sql = "INSERT INTO messages (thread_id, content, created_at, username) VALUES (:thread_id, :content, NOW(), :user)"
+    db.session.execute(sql, {"thread_id":thread_id, "content":content, "user":user})
+    db.session.commit()
+    return redirect("/home")
+    
+#################################################################################################################################
 
 #@app.route("/")
 #def index():
@@ -155,14 +181,6 @@ def search():
 #@app.route("/new")
 #def new():
 #    return render_template("new.html")
-
-#@app.route("/send", methods=["POST"])
-#def send():
-#    content = request.form["content"]
-#    sql = "INSERT INTO messages (content) VALUES (:content)"
-#    db.session.execute(sql, {"content":content})
-#    db.session.commit()
-#    return redirect("/")
 
 #@app.route("/")
 #def index():
