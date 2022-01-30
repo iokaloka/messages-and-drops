@@ -1,4 +1,33 @@
 # Messages and drops
+
+## Update 30.1.2022
+Right. Things have started to fall into place even though there is more to do than there is time available.
+- The application is running in Heroku.
+    - Any one is free to go and test/use it as they will at: https://messages-and-drops.herokuapp.com/
+    - Just create an account for yoursel, login and start sending messages to the main thread that is currently the only one available.
+- There are still no proper security means taken into use. No input sanitation, no CSF countermeasures etc. I did implement the registration so that only one account with a certain name can be created. During registration you are asked to input your password of choise twise to help you get it right. The system **does not** give information whether the username or password is wrong during the login process.
+- I have base templates for many featurest, but I intend to work one part at a time so it might seem there are lot of un-user and unnecessary files/code in the project. That is actually true but we'll see how things shape up on the upcoming weeks.
+
+Accomplishments this week:
+- Registration
+- Login
+- Home page / main thread view.
+- Sending messages to main thread.
+- Searching messages
+- Projects github and README.md are up to date
+- Project is running on Heroku and Herokus repository is up to date.
+
+Coming up next:
+- Creation of threads
+- Deletion of messages
+- Deletion of threads
+- Some ADMIN functionality
+- Probably the first drops.
+- Limited thread access rights
+- ...
+
+---
+
 ## Background
 
 So, the idea of having to design a application as an excercise has not become too comfortable to me yet. I have always been pretty eager to create my own apps and projects, but the lack of free time kind of suppresses me. The situation is the same even now, as I work 4 days a week and try to complete some studies at the same time.
@@ -45,3 +74,8 @@ This should not be too complicated or time consuming to create and yet the appli
 ---
 
 Please note that the above mentioned spec is not final in any way and will more than likey chance during the process.
+
+---
+
+
+
