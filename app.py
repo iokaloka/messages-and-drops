@@ -36,19 +36,16 @@ def login():
     if not user:
         # Invalid username: I want the application to behave similarry if either username of password does not match.
         # This way inputting random usernames cannot be used to find out what usernames are actually stored in the database.
-        print("User not found")
         return render_template("index.html", error="Wrong username or password")
     else:
         hash_value = user.password
         if check_password_hash(hash_value, password):
             # If the credential match, we will set the username to session and redirect to home page.
             session["username"] = username
-            print("Success")
             return redirect("/home")
         else:
             # Invalid username: I want the application to behave similarry if either username of password does not match.
             # This way inputting random usernames cannot be used to find out what usernames are actually stored in the database.
-            print("Password not matching")
             return render_template("index.html", error="Wrong username or password")
     
 @app.route("/logout")
@@ -140,6 +137,14 @@ def result(id):
     result = db.session.execute(sql, {"poll_id":id})
     choices = result.fetchall()
     return render_template("result.html", topic=topic, choices=choices)
+
+@app.route("/search", methods=["GET"])
+def search():
+    query = request.args["query"]
+    sql = "SELECT id, content FROM messages WHERE content LIKE :query"
+    result = db.session.execute(sql, {"query":"%"+query+"%"})
+    messages = result.fetchall()
+    return render_template("search_results.html", count=len(messages), messages=messages)
 
 #@app.route("/")
 #def index():

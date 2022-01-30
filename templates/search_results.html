@@ -1,0 +1,7 @@
+Message amount: {{ count }}
+<hr>
+{% for message in messages %}
+{{ message.content }}
+<hr>
+{% endfor %}
+<a href="/new">Send message</a>
