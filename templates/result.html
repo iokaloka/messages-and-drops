@@ -9,4 +9,14 @@ The following extras:
 Special requests:
 {{ message }}--->
 
-Hello there, {{ name }}!
+<!---Hello there, {{ name }}!--->
+
+{{ topic }}
+<hr>
+<ul>
+{% for choice in choices %}
+<li> {{ choice.choice }}: {{ choice.count }} kpl
+{% endfor %}
+</ul>
+<hr>
+<a href="/">Takaisin</a>

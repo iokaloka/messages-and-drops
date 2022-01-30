@@ -8,6 +8,7 @@
 </ul>
 <img src="/static/kuva.png" alt="Eggström">--->
 
+<!---
 Viestien määrä: {{ count }}
 <hr>
 {% for message in messages %}
@@ -22,3 +23,31 @@ Viestien määrä: {{ count }}
 <img src="/static/card_eva1.png" alt="evasion+1-card">
 <img src="/static/card_acc1.png" alt="accuracy+1-card">
 <img src="/static/card_lck1.png" alt="luck+1-card">
+--->
+
+{% if session.username %}
+
+<p>Olet kirjautunut nimellä {{ session.username }}</p>
+<a href="/logout">Logout</a>
+<a href="/new">New survey</a>
+<hr>
+{% for poll in polls %}
+Aihe: {{ poll.topic }} <br>
+Luotu: {{ poll.created_at.strftime("%Y-%m-%d %H:%M:%S") }} <br>
+<a href="/poll/{{ poll.id }}">Open survey</a> |
+<a href="/result/{{ poll.id }}">Show results</a> <br>
+<hr>
+{% endfor %}
+
+{% else %}
+<form action="/login" method="POST">
+<p>Username:<br>
+<input type="text" name="username"></p>
+<p>Password:<br>
+<input type="password" name="password"></p>
+<input type="submit" value="Sign in">
+<a href="/init_registration/0">Register</a>
+</form>
+{% endif %}
+
+
