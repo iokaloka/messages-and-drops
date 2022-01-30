@@ -4,7 +4,7 @@
 Right. Things have started to fall into place even though there is more to do than there is time available.
 - The application is running in Heroku.
     - Any one is free to go and test/use it as they will at: https://messages-and-drops.herokuapp.com/
-    - Just create an account for yoursel, login and start sending messages to the main thread that is currently the only one available.
+    - Just create an account for yourself, login and start sending messages to the main thread that is currently the only one available.
 - There are still no proper security means taken into use. No input sanitation, no CSF countermeasures etc. I did implement the registration so that only one account with a certain name can be created. During registration you are asked to input your password of choise twise to help you get it right. The system **does not** give information whether the username or password is wrong during the login process.
 - I have base templates for many featurest, but I intend to work one part at a time so it might seem there are lot of un-user and unnecessary files/code in the project. That is actually true but we'll see how things shape up on the upcoming weeks.
 

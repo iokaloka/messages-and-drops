@@ -1,7 +1,7 @@
 <h1 style="text-align: center;">Welcome {{ session.username }}!</h1>
 <hr>
 	<p style="text-align: center;">Main thread</p>
-	<p style="border-style: groove; height: 35%; padding: 20px;">
+	<p style="border-style: groove; height: 35%; padding: 20px; overflow-y: scroll; overflow-x: scroll;">
 		{% for message in messages %}
 			{{ message.created_at.strftime("%Y-%m-%d %H:%M:%S") }} by: <b>{{ message.username }}</b><br>
 			- {{ message.content }}</br>
