@@ -1,5 +1,8 @@
 # Messages and drops
 
+## Update 6.2.2022
+The week has been everything else but porductional. CoVid-19 found it's way to the house and my decreaded physical condition has highly affected the amount of work I have been able to to. I did some designs and edited the home page of the application more to it's intended form. Tomorrow (hopefully) I start to work with the **threads**.
+
 ## Update 30.1.2022
 Right. Things have started to fall into place even though there is more to do than there is time available.
 - The application is running in Heroku.
