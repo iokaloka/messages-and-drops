@@ -1,25 +1,53 @@
 <h1 style="text-align: center;">Welcome {{ session.username }}!</h1>
 <hr>
 	<p style="text-align: center;">Main thread</p>
-	<p style="border-style: groove; height: 35%; padding: 20px; overflow-y: scroll; overflow-x: scroll;">
+	<p style="border-style: groove; height: 30%; padding: 20px; overflow-y: scroll; overflow-x: scroll;">
 		{% for message in messages %}
 			{{ message.created_at.strftime("%Y-%m-%d %H:%M:%S") }} by: <b>{{ message.username }}</b><br>
 			- {{ message.content }}</br>
 			<br>
-		{% endfor %}
-		<form action="/send_message" method="POST">
+		{% endfor %}	
+	</p>
+	<div style="height: 12%;">
+		<form style="display: inline; float: left; width: 70%; margin-left: 2%;" action="/send_message" method="POST">
 			Message: <br>
-			<textarea name="content" rows="3" cols="40"></textarea>
+			<textarea style="width: 95%;" name="content" rows="3" cols="40"></textarea>
 			<br>
 			<input type="submit" value="Send">
 		</form>
-	</p>
-<form action="/search" method="GET">
-	Hakusana: <input type="text" name="query"></br>
-	<input type="submit" value="Search">
-</form>
-
-<a href="/logout">Logout</a>
+		
+		<form style="display: inline;" action="/search" method="GET">
+			Hakusana: <input style="width: 15%;" type="text" name="query"></br>
+			<input type="submit" value="Search">
+		</form>	
+	</div>
+	<div style="height: 28%; padding: 10px">
+		<div style="float: left; width: 45%; border-style: groove; height: 80%; padding: 20px;">
+			<b>Your threads</b>
+			<p style="height: 80%; overflow-y: scroll; overflow-x: scroll;">
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			</p>
+		</div>
+		
+		<div style="float: right; width: 45%; border-style: groove; height: 80%; padding: 20px;">
+			<b>Browse threads</b>
+			<p style="height: 80%; overflow-y: scroll; overflow-x: scroll;">
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+				bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+			</p>
+		</div>
+	</div>
+	<div style="height: 3%">
+		<a href="/logout">Logout</a>
+	</div>
 <!--
 <a href="/new">New survey</a>
 
